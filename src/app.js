@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -36,6 +37,14 @@ app.use('/api/auth', authRoutes);
 app.use('/api/groups', groupRoutes);
 app.use('/api/expenses', expenseRoutes);
 app.use('/api/invitations', invitationRoutes);
+
+// Serve static frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Serve index.html when visiting "/"
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+});
 
 app.use((req, res) => res.status(404).json({ error: 'Route not found' }));
 
