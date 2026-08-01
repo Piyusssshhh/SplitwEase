@@ -139,27 +139,36 @@ async function settleUp(fromUser, toUser, amount) {
   }
 }
 
-document.getElementById('inviteBtn').addEventListener('click', async () => {
-  const inviteError = document.getElementById('inviteError');
-  inviteError.classList.remove('visible');
+document.getElementById('addMemberBtn').addEventListener('click', async () => {
+  const addMemberError = document.getElementById('addMemberError');
+  addMemberError.classList.remove('visible');
 
-  const email = document.getElementById('inviteEmail').value.trim();
+  const email = document.getElementById('addMemberEmail').value.trim();
   if (!email) {
-    inviteError.textContent = 'Please enter an email';
-    inviteError.classList.add('visible');
+    addMemberError.textContent = 'Please enter an email';
+    addMemberError.classList.add('visible');
     return;
   }
 
+  const btn = document.getElementById('addMemberBtn');
+  btn.disabled = true;
+  btn.textContent = 'Adding...';
+
   try {
-    await apiFetch(`/groups/${groupId}/invite`, {
+    await apiFetch(`/groups/${groupId}/members`, {
       method: 'POST',
       body: JSON.stringify({ email }),
     });
-    document.getElementById('inviteEmail').value = '';
-    alert(`Invitation sent to ${email}`);
+    document.getElementById('addMemberEmail').value = '';
+    // Reload the whole group so the new member shows up everywhere —
+    // in the members list AND as a checkbox option for future expenses.
+    await loadGroupDetail();
   } catch (err) {
-    inviteError.textContent = err.message;
-    inviteError.classList.add('visible');
+    addMemberError.textContent = err.message;
+    addMemberError.classList.add('visible');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Add to Group';
   }
 });
 
