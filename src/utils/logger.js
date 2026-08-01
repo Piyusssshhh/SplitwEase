@@ -19,8 +19,16 @@ const logger = winston.createLogger({
       ),
   transports: [
     new winston.transports.Console(),
-    new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'logs/combined.log' }),
+    // File logging only in development — in production/cloud environments,
+    // logs go to stdout and are captured by the platform (Render, Railway,
+    // Docker logs, etc.) instead. Writing to local files in a container
+    // also risks permission errors depending on the container's filesystem setup.
+    ...(isProd
+      ? []
+      : [
+          new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
+          new winston.transports.File({ filename: 'logs/combined.log' }),
+        ]),
   ],
 });
 
