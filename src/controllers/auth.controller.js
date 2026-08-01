@@ -47,7 +47,7 @@ const googleCallback = asyncHandler(async (req, res) => {
 
   // Redirect back to frontend with tokens (in practice, consider a more
   // secure handoff like a one-time code, but this is the simple version).
-  const redirectUrl = `${require('../config/env').clientUrl}/oauth/callback?accessToken=${accessToken}&refreshToken=${refreshToken}`;
+  const redirectUrl = `${require('../config/env').clientUrl}/oauth-callback.html?accessToken=${accessToken}&refreshToken=${refreshToken}`;
   res.redirect(redirectUrl);
 });
 
