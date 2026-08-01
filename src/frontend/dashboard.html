@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SplitEase - Your Groups</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <h1>Your Groups</h1>
+      <button class="secondary" id="logoutBtn">Log Out</button>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top: 0;">Create a new group</h2>
+      <label for="groupName">Group name</label>
+      <input type="text" id="groupName" placeholder="Goa Trip">
+      <button id="createGroupBtn">Create Group</button>
+      <div class="error" id="createError"></div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top: 0;">Your groups</h2>
+      <div id="groupsList">
+        <div class="loading">Loading groups...</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

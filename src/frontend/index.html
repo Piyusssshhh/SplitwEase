@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SplitEase - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>💰 SplitEase</h1>
+    <p class="subtitle" id="pageSubtitle">Log in to manage your shared expenses</p>
+
+    <div class="card">
+      <!-- Signup-only field, hidden by default -->
+      <div id="nameField" style="display: none;">
+        <label for="name">Your name</label>
+        <input type="text" id="name" placeholder="Piyush Kumar">
+      </div>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="you@example.com">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="At least 8 characters">
+
+      <button id="submitBtn">Log In</button>
+
+      <div class="error" id="errorBox"></div>
+    </div>
+
+    <div class="toggle-link" id="toggleLink">Don't have an account? Sign up</div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

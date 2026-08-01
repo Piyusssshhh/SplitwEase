@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SplitEase - Group</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wide-container">
+    <a href="dashboard.html" class="back-link">← Back to groups</a>
+    <h1 id="groupName">Loading...</h1>
+
+    <div class="card">
+      <h2 style="margin-top: 0;">Members</h2>
+      <div id="membersList"><div class="loading">Loading...</div></div>
+
+      <label for="inviteEmail">Invite someone by email</label>
+      <input type="email" id="inviteEmail" placeholder="friend@example.com">
+      <button id="inviteBtn">Send Invite</button>
+      <div class="error" id="inviteError"></div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top: 0;">Add an expense</h2>
+      <label for="expenseDesc">Description</label>
+      <input type="text" id="expenseDesc" placeholder="Hotel booking">
+
+      <label for="expenseAmount">Amount (₹)</label>
+      <input type="number" id="expenseAmount" placeholder="2000" min="0" step="0.01">
+
+      <label>Split equally between</label>
+      <div id="participantsList"><div class="loading">Loading members...</div></div>
+
+      <button id="addExpenseBtn">Add Expense</button>
+      <div class="error" id="expenseError"></div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top: 0;">Balances</h2>
+      <div id="balancesList"><div class="loading">Loading...</div></div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top: 0;">Suggested Settlements</h2>
+      <div id="settlementsList"><div class="loading">Loading...</div></div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top: 0;">Recent Expenses</h2>
+      <div id="expensesList"><div class="loading">Loading...</div></div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/group.js"></script>
+</body>
+</html>
