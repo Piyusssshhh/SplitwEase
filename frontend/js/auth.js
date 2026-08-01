@@ -3,6 +3,14 @@ if (getToken()) {
   window.location.href = 'dashboard.html';
 }
 
+// Clicking "Continue with Google" navigates to the backend's OAuth start
+// route — this is a real page navigation (not a fetch), since the whole
+// point is to leave our site, log in on Google's site, then come back.
+document.getElementById('googleBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location.href = `${API_BASE}/auth/google`;
+});
+
 let isSignupMode = false;
 
 const nameField = document.getElementById('nameField');

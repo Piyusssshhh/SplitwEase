@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SplitEase - Signing you in...</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="loading">Signing you in...</div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script>
+    // Your backend's Google callback redirects here with tokens in the URL
+    // query string. We just pull them out, store them the same way normal
+    // login does, and continue on.
+    const params = new URLSearchParams(window.location.search);
+    const accessToken = params.get('accessToken');
+    const refreshToken = params.get('refreshToken');
+
+    if (accessToken && refreshToken) {
+      setTokens(accessToken, refreshToken);
+      window.location.href = 'dashboard.html';
+    } else {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
